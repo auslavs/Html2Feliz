@@ -105,7 +105,7 @@ let formatAttribute indent level (HtmlAttribute (attrName, attrValue)) =
         //         |> String.concat "; "
 
         //     $"{indentStr}prop.classes [ {classes} ]"
-        $"{indentStr}prop.className \"attrValue\""
+        $"{indentStr}prop.className \"{attrValue}\""
     | _ ->
         let propName = formatAttributeName attrName
         let propValue = formatAttributeValue attrName attrValue
