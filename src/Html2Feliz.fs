@@ -94,17 +94,18 @@ let formatAttribute indent level (HtmlAttribute (attrName, attrValue)) =
 
     match attrName with
     | "class" ->
-        let classes = attrValue.Split(' ')
+        // let classes = attrValue.Split(' ')
 
-        match classes with
-        | [| single |] -> $"{indentStr}prop.className \"{single}\""
-        | multi ->
-            let classes =
-                multi
-                |> Array.map (sprintf "\"%s\"")
-                |> String.concat "; "
+        // match classes with
+        // | [| single |] -> $"{indentStr}prop.className \"{single}\""
+        // | multi ->
+        //     let classes =
+        //         multi
+        //         |> Array.map (sprintf "\"%s\"")
+        //         |> String.concat "; "
 
-            $"{indentStr}prop.classes [ {classes} ]"
+        //     $"{indentStr}prop.classes [ {classes} ]"
+        $"{indentStr}prop.className \"attrValue\""
     | _ ->
         let propName = formatAttributeName attrName
         let propValue = formatAttributeValue attrName attrValue
@@ -193,5 +194,5 @@ let rec formatNode indent level (pos: ChildPosition, node: HtmlNode) =
 
 let format (nodes: HtmlNode list) =
     [ for node in toPositionedChildren nodes do
-          yield! formatNode 4 0 node ]
+          yield! formatNode 2 0 node ]
     |> String.concat "\n"
